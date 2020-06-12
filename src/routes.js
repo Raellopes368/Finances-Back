@@ -1,8 +1,7 @@
 const routes = require('express').Router();
 const UserController = require('./app/controllers/UserController');
 const FinancesController = require('./app/controllers/FinancesController');
-const FinancesDateController = require('./app/controllers/FinancesDateController');
-const CompareDateFinances = require('./app/controllers/CompareDateFinances');
+const FiltersController = require('./app/controllers/FiltersController');
 const accessToken = require('./app/middlewares/accessToken');
 
 routes.get('/', (req, res) => {
@@ -19,7 +18,6 @@ routes.put('/paid', accessToken, FinancesController.update);
 routes.get('/finances/:id', accessToken, FinancesController.index);
 routes.get('/teste', accessToken, FinancesController.teste);
 routes.get('/teste/media', accessToken, FinancesController.teste2);
-routes.post('/date', accessToken, FinancesDateController.index);
-routes.post('/compare', accessToken, CompareDateFinances.index);
+routes.get('/filters/:id', accessToken, FiltersController.index);
 
 module.exports = routes;
