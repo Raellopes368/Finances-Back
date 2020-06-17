@@ -32,6 +32,25 @@ class UserController {
     return res.json({ user, token });
   }
 
+  async edite(req, res) {
+    const { id, password } = req.body;
+
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.json({ error: 'Usuário não encontrado' });
+    }
+
+    user.password = password;
+    const token = generateToken(id);
+
+    await user.save();
+
+    user.password = undefined;
+
+    return res.json({ user, token });
+  }
+
   async update(req, res) {
     const { balance, userId, tithe } = req.body;
 

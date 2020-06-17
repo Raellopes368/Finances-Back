@@ -19,6 +19,7 @@ const UserSChema = new Schema({
 });
 function hashPassword(next) {
   const hash = bcrypt.hashSync(this.password, 8);
+  console.log('Passou por aqui');
   this.password = hash;
   next();
 }
