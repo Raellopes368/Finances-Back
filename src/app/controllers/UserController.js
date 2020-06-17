@@ -16,6 +16,10 @@ class UserController {
       return res.json({ error: 'Nome de usuário não pode conter caracteres especiais, exceto @ e #' });
     }
 
+    if (password.length < 6) {
+      return res.json({ error: 'Informe uma senha de no mínimo 6 dígitos!' });
+    }
+
 
     if (!email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
       return res.json({ error: 'Informe um email válido' });
@@ -34,6 +38,10 @@ class UserController {
 
   async edite(req, res) {
     const { id, password } = req.body;
+
+    if (password.length < 6) {
+      return res.json({ error: 'Informe uma senha de no mínimo 6 dígitos!' });
+    }
 
     const user = await User.findById(id);
 
