@@ -14,7 +14,7 @@ class FinancesController {
     }
     const finances = await Finance.find({
       $and: [
-        { user },
+        { user: user.id },
         {
           date: {
             $gte: new Date(year, month - 1, day),

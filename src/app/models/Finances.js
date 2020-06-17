@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const year = new Date().getFullYear();
 const month = new Date().getMonth();
@@ -6,10 +6,7 @@ const day = new Date().getDate();
 
 
 const FinanceSchema = new Schema({
-  user: {
-    type: Types.ObjectId,
-    ref: 'User',
-  },
+  user: String,
   description: String,
   date: {
     type: Date,

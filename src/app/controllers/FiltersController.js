@@ -15,7 +15,7 @@ class FiltersController {
 
     const finances = await Finance.find({
       $and: [
-        { user },
+        { user: user.id },
         filters,
       ],
     });
