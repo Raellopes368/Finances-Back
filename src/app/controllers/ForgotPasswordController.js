@@ -18,7 +18,7 @@ class ForgotPasswordController {
       to: email,
       subject: 'Recuperação de senha do App Finanças',
       html: `
-      Olá, ví que você esqueceu sua senha, <a href='https://rrfinances.ga/forgot/${user.id}/${token}'>clique aqui para recuperar</a>
+      Olá, ví que você esqueceu sua senha, <a href='https://rrfinances.herokuapp.com/forgot/${user.id}/${token}'>clique aqui para recuperar</a>
       <br/> 
       Obrigado por usar meu app de finanças.
       `,
