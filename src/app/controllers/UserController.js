@@ -7,7 +7,18 @@ const porcentage = require('../../utils/porcentage');
 class UserController {
   async store(req, res) {
     const { name, password, email } = req.body;
-    let user = await User.findOne({ name });
+
+    let user = await User.findOne({
+      $or: [
+        {
+          name,
+        },
+        {
+          email,
+        },
+      ],
+    });
+
     if (user) {
       return res.json({ error: 'Usuário já existe' });
     }
