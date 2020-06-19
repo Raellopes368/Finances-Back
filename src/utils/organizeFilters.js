@@ -14,10 +14,11 @@ module.exports = (init, final, type, paid, description) => {
   }
 
   if (type) {
-    const types = type.split(',').map((tp) => tp.trim());
+    const [types] = type.split(',').map((tp) => tp.trim());
 
     filters.type = {
-      $in: types,
+      $regex: types,
+      $options: 'igm',
     };
   }
 
