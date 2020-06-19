@@ -18,10 +18,10 @@ const UserSChema = new Schema({
   ],
 });
 function hashPassword(next) {
+  if (!this.isModified('password')) return next();
   const hash = bcrypt.hashSync(this.password, 8);
-  console.log('Passou por aqui');
   this.password = hash;
-  next();
+  return next();
 }
 
 UserSChema.pre('save', hashPassword);
