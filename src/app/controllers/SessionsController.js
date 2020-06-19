@@ -12,6 +12,7 @@ class SessionsController {
 
       if (result) {
         const token = generateToken(user.id);
+
         user.password = undefined;
         return res.json({ user, token });
       }

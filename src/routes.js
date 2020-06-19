@@ -11,9 +11,9 @@ routes.get('/', (req, res) => res.json({
 }));
 
 routes.post('/users', UserController.store);
-routes.put('/users/forgot', accessToken, UserController.edite);
-routes.post('/users/forgot', ForgotPasswordController.store);
 routes.post('/sessions', SessionsController.store);
+routes.post('/users/forgot', ForgotPasswordController.store);
+routes.put('/users/forgot', accessToken, UserController.edite);
 routes.get('/login/:id', accessToken, UserController.show);
 routes.put('/balance', accessToken, UserController.update);
 routes.post('/finances', accessToken, FinancesController.store);
